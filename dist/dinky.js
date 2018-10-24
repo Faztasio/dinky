@@ -24,7 +24,7 @@ $("p")
 
 app.prototype = {}
 glob.sync("./plugins/*.js").forEach(function(plugin) {
-  app.prototype[path.resolve(plugin)] = require(path.resolve(plugin))
+  app.prototype[path.basename(plugin).replace(/\.[^/.]+$/, "")] = require(path.resolve(plugin))
 }
 
 var methods = function() {}
