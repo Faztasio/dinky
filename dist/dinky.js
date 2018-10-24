@@ -20,7 +20,7 @@ $("p")
 */
 app.prototype = {
   all: function(object) {
-    l = {}
+    l = {...require("./plugins.js")}
     if (this.type == "class" || this.type == "tag") {
       Object.keys(object[0].style).forEach(function(key) {
         l[key] = function(val) {
