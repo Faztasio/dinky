@@ -2,23 +2,24 @@ app = function(tag) {
   var object = NULL
   if (tag[0] == "#") {
     object = document.getElementById(tag.drop(1))
-    app.type = "id"
-    return app.all(object)
+    methods.type = "id"
+    return methods.all(object)
   } else if (tag[0] == ".") {
     object = document.getElementsByClassName()
-    app.type = "class"
-    return app.all(object)
+    methods.type = "class"
+    return methods.all(object)
   } else  {
     object = document.getElementsByTag(tag)
-    app.type = "tag"
-    return app.all(object)
+    methods.type = "tag"
+    return methods.all(object)
   }
 }
 /*
 const $ = require("dinky")
 $("p")
 */
-app.prototype = {
+var methods = function() {}
+methods.prototype = {
   all: function(object) {
     l = {...require("./plugins.js")}
     if (this.type == "class" || this.type == "tag") {
