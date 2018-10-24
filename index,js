@@ -1,0 +1,5 @@
+define([
+  "./dist/dinky"
+], function(dinky) {
+  return dinky
+});
