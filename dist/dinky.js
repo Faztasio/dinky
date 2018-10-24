@@ -1,3 +1,6 @@
+var glob = require("glob"),
+    path = require("path");
+
 app = function(tag) {
   var object = NULL
   if (tag[0] == "#") {
@@ -18,6 +21,12 @@ app = function(tag) {
 const $ = require("dinky")
 $("p")
 */
+
+app.prototype = {}
+glob.sync("./plugins/*.js").forEach(function(plugin) {
+  app.prototype[path.resolve(plugin)] = require(path.resolve(plugin))
+}
+
 var methods = function() {}
 methods.prototype = {
   all: function(object) {
@@ -40,13 +49,6 @@ methods.prototype = {
     return l
   }
 }
-                                         
-var isNode = new Function("try {return this===global;}catch(e){return false;}");
-var $ = null
 
 // tests if global scope is binded to "global"
-if(isNode()) {
-  module.exports = app
-} else {
-  $ = app
-}  
+module.exports = app
