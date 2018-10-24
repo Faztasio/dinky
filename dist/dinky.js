@@ -1,24 +1,22 @@
-define([],app)
-
-app = function(tag) {
+$ = function(tag) {
   var object = NULL
   if (tag[0] == "#") {
     object = document.getElementById(tag.drop(1))
-    app.type = "id"
-    return app.all(object)
+    $.type = "id"
+    return $.all(object)
   } else if (tag[0] == ".") {
     object = document.getElementsByClassName()
-    app.type = "class"
-    return app.all(object)
+    $.type = "class"
+    return $.all(object)
   } else  {
     object = document.getElementsByTag(tag)
-    app.type = "tag"
-    return app.all(object)
+    $.type = "tag"
+    return $.all(object)
   }
 }
 /*
-const app = require("dinky")
-app("p")
+const $ = require("dinky")
+$("p")
 */
 app.prototype = {
   all: function(object) {
@@ -41,3 +39,9 @@ app.prototype = {
     return l
   }
 }
+                                         
+var isNode = new Function("try {return this===global;}catch(e){return false;}");
+
+// tests if global scope is binded to "global"
+if(isNode()) {
+  module.exports = $
