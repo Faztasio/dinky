@@ -1,17 +1,17 @@
-$ = function(tag) {
+app = function(tag) {
   var object = NULL
   if (tag[0] == "#") {
     object = document.getElementById(tag.drop(1))
-    $.type = "id"
-    return $.all(object)
+    app.type = "id"
+    return app.all(object)
   } else if (tag[0] == ".") {
     object = document.getElementsByClassName()
-    $.type = "class"
-    return $.all(object)
+    app.type = "class"
+    return app.all(object)
   } else  {
     object = document.getElementsByTag(tag)
-    $.type = "tag"
-    return $.all(object)
+    app.type = "tag"
+    return app.all(object)
   }
 }
 /*
@@ -41,7 +41,11 @@ app.prototype = {
 }
                                          
 var isNode = new Function("try {return this===global;}catch(e){return false;}");
+var $ = null
 
 // tests if global scope is binded to "global"
 if(isNode()) {
-  module.exports = $
+  module.exports = app
+} else {
+  $ = app
+}  
