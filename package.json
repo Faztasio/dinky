@@ -1,0 +1,6 @@
+{
+  "name": "dinky",
+  "description": "Small framework for front end design.",
+  "main": "./index.js",
+  "author": "Zack Pace <zack@fbts.ca>"
+}
